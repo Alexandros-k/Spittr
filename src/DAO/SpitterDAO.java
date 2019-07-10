@@ -62,7 +62,8 @@ public class SpitterDAO {
 		}
 	}
 
-	public void updateAccount(Spitter spitter,String oldUsername){
+	//updates an existing account using the existing username as identifier with the new account)
+	public void updateAccount(String existingUsername,Spitter spitter){
 		Connection con = null;
 
 		try {
@@ -78,7 +79,7 @@ public class SpitterDAO {
 											 "username = "+"\""+ spitter.getUsername()+ "\""+" ,"+		
 											 "password = "+"\""+ spitter.getPassword()+ "\""+" ,"+		
 											 "email = "+"\""+ spitter.getEmail()+ "\""+
-											  "where username="+"\""+oldUsername+ "\"";
+											  "where username="+"\""+existingUsername+ "\"";
 			
 			
 			stmt.executeUpdate(query);
@@ -135,6 +136,7 @@ public class SpitterDAO {
 		
 	}
 		
+	//not functioning
 	public Boolean isUsernameUnique(Spitter spitter){
 		Connection con = null;
 		List<String> usernameList= new ArrayList();
