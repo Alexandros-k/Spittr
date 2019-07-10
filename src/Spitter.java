@@ -105,11 +105,11 @@ public class Spitter {
 			createConnection(querry);
 		}
 	
-	public void deleteAccount(){}
+	public void deleteAccount(){}// a delete query which will  delete an account based on username and be passed to the createConnection method which is also responsible to execute query
 	
-	public void updateAccount(){}
+	public void updateAccount(){}// a update query which will update an account based on username and be passed to the createConnection method which is also responsible to execute query
 	
-	public void viewAccount(){}
+	public void viewAccount(){}// a view query which will retrieve an account based on username and be passed to the createConnection method which is also responsible to execute query
 	
 	public void createConnection(String query) {
 		Connection con = null;
