@@ -98,12 +98,18 @@ public class Spitter {
 	}
 
 
-	public void createSpitter(){
+	public void createAccount(){
 		
 		String querry =	"INSERT INTO spitter(firstname,lastname,username,password,email) VALUES ("+"\""+this.getFirstname()+"\""+ ","+"\"" +this.getLastname()+"\""+
 		","+"\""+this.getUsername()+"\""+","+"\"" +this.getPassword()+"\""+","+"\"" +this.getEmail()+"\""+ ")";
 			createConnection(querry);
 		}
+	
+	public void deleteAccount(){}
+	
+	public void updateAccount(){}
+	
+	public void viewAccount(){}
 	
 	public void createConnection(String query) {
 		Connection con = null;

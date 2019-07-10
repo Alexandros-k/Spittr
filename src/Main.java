@@ -11,12 +11,8 @@ public class Main {
 		
 	Spitter spitter = new Spitter("Alex","kon","user4","pass3","alex@kon.com");
 	
-	if(spitter.isUsernameUnique()) {
-	
-	spitter.createSpitter();
-	}
+	spitter.createAccount();	
 		
 	}
-
-
+	
 }
