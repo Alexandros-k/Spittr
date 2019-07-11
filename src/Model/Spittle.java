@@ -4,20 +4,31 @@ public class Spittle {
 
 int id;
 	
-	Spitter spitter;
+private	String username;
 
-	String post;	
+private String post;	
 
-	public Spittle(Spitter spitter, String post) {
-		super();
-		this.spitter = spitter;
+	
+	
+	
+
+	public Spittle() {
+		
+	}
+
+
+
+
+	public Spittle(String post) {		
 		this.post = post;
 	}
 
-	public Spittle(int id, Spitter spitter, String post) {
-		super();
+
+
+
+	public Spittle(int id, String username, String post) {		
 		this.id = id;
-		this.spitter = spitter;
+		this.username = username;
 		this.post = post;
 	}
 
@@ -29,13 +40,21 @@ int id;
 		this.id = id;
 	}
 
-	public Spitter getSpitter() {
-		return spitter;
+
+
+	public String getUsername() {
+		return username;
 	}
 
-	public void setSpitter(Spitter spitter) {
-		this.spitter = spitter;
+
+
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
+
+
+
 
 	public String getPost() {
 		return post;

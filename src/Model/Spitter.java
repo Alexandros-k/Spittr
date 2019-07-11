@@ -8,40 +8,40 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
 public class Spitter {
-private	int id;
-	
-private	String firstname;
-	
-private	String lastname;
-	
-private	String username;
-	
-private String password;
-	
-private	String email;
+	private int id;
 
+	private String firstname;
 
-	
+	private String lastname;
+
+	private String username;
+
+	private String password;
+
+	private String email;
+
+	private Spittle spittle;
+
 	public Spitter() {
-		
-	}	
 
-	
+	}
 
-	public Spitter(String firstname, String lastname, String username, String password, String email) {	
+	public Spitter(String firstname, String lastname, String username, String password, String email) {
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.username = username;
 		this.password = password;
 		this.email = email;
-	}	
+	}
 
+	public Spittle getSpittle() {
+		return spittle;
+	}
 
-
-
+	public void setSpittle(Spittle spittle) {
+		this.spittle = spittle;
+	}
 
 	public int getId() {
 		return id;
@@ -87,87 +87,13 @@ private	String email;
 		return email;
 	}
 
-
-
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
+	public void createNewSpittle(String post) {
+		this.spittle = new Spittle();
+		spittle.setPost(post);
+	}
 
-	public void createAccount(){
-		
-		String querry =	"INSERT INTO spitter(firstname,lastname,username,password,email) VALUES ("+"\""+this.getFirstname()+"\""+ ","+"\"" +this.getLastname()+"\""+
-		","+"\""+this.getUsername()+"\""+","+"\"" +this.getPassword()+"\""+","+"\"" +this.getEmail()+"\""+ ")";
-			createConnection(querry);
-		}
-	
-	public void deleteAccount(){
-		
-		String querry =	"DELETE From spitter\r\n" + 
-				"where firstname = "+"\""+this.getFirstname()+"\"";
-					createConnection(querry);
-					
-	}// a delete query which will  delete an account based on username and be passed to the createConnection method which is also responsible to execute query
-	
-	public void updateAccount(){}// a update query which will update an account based on username and be passed to the createConnection method which is also responsible to execute query
-	
-	public void viewAccount(){}// a view query which will retrieve an account based on username and be passed to the createConnection method which is also responsible to execute query
-	
-	public void createConnection(String query) {
-		Connection con = null;
-		
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/spittr", "root", "root");
-			System.out.println("Connected database successfully...");
-			Statement stmt = con.createStatement();			
-		
-			stmt.executeUpdate(query);
-			System.out.println("transaction successful");
-			
-		} catch (Exception e) {
-			System.out.println(e);
-		} finally {
-			try {
-				con.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-	}
-	
-	
-	Boolean isUsernameUnique(){
-		Connection con = null;
-		List<String> usernameList= new ArrayList();
-		try {
-		Class.forName("com.mysql.jdbc.Driver");
-		con = DriverManager.getConnection("jdbc:mysql://localhost:3306/spittr", "root", "root");
-		System.out.println("Connected database successfully...");
-		Statement stmt = con.createStatement();		
-		String query="select username From spitter";
-		ResultSet rs = stmt.executeQuery(query);
-		while(rs.next()) {
-			usernameList.add(rs.getString(0));
-		}
-			
-		for (String usernameFromDB : usernameList) {
-			if(usernameFromDB.equals(this.getUsername())) {
-				return false;
-				}
-		}
-		
-	} catch (Exception e) {
-		System.out.println(e);
-	} finally {
-		try {
-			con.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-		return true;
-	}
-	
-	
 }
